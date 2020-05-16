@@ -1,3 +1,5 @@
+import React from 'react'
+
 const MessageForm = (props) => {
     return (
         <div>
@@ -5,3 +7,5 @@ const MessageForm = (props) => {
         </div>
     )
 }
+
+export default MessageForm;
