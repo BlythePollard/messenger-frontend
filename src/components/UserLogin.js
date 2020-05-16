@@ -26,16 +26,21 @@ export default class UserLogin extends React.Component {
         })
         .then(resp => resp.json())
         .then(data => {
-            console.log(data)
-            localStorage.setItem("token", data.id)
-            this.setState({ username: data.username})
-            this.setState({ isSubmitted: true })
+            if(data.username != undefined) {
+                localStorage.setItem("token", data.id)
+                this.setState({ username: data.username})
+                this.setState({ isSubmitted: true })
+            } else {
+                alert("please try again")
+            }
         })
     }
 
     render() {
         return (
             <div>
+                {this.state.isSubmitted && <MessageForm />}   
+                <br></br>
                <form onSubmit={this.handleSubmit}>
                    <input 
                         type="username"
@@ -44,8 +49,7 @@ export default class UserLogin extends React.Component {
                         onChange={this.handleChange}
                    />
                    <input type='submit' value='Login'/>
-                </form> 
-                {this.state.isSubmitted && <MessageForm />}           
+                </form>         
             </div>
         )
     }
