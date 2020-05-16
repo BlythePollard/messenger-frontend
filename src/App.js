@@ -1,12 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ChatContainer from './containers/ChatContainer'
 
 class App extends React.Component {
   render() {
   return (
     <div>
-      App
+      <ChatContainer />
     </div>
   );
   }
