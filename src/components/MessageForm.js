@@ -1,44 +1,47 @@
 import React from 'react'
+import ChatBox from './ChatBox'
+
 
 export default class MessageForm extends React.Component {
     state = {
-        message: '',
+        content: '',
+        username: this.props.username,
+        messages: []
     }
 
-    handleSubmit = () => {
+    handleSubmit = (event) => {
+        event.preventDefault()
         const user = this.props.localStorage
-        const message = this.state.message
-        console.log(message)
+        const data = this.state
         return fetch(`http://localhost:3000/api/v1/users/${user}/messages`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify(message)
+            body: JSON.stringify(data)
         })
         .then(resp => resp.json())
-        .then(newMessage => {
-            console.log(newMessage)
+        .then(data => {
+            this.setState({ messages: data})
         })
-        //post new message to all messages
     }
 
     handleChange = (event) => {
         this.setState({
-            message: event.target.value
+            content: event.target.value
         })
     }
     
     render() {
-        console.log(this.props)
         return(
             <div>
+            <ChatBox messages={this.state.messages}/>
             <form onSubmit={this.handleSubmit}>
             <input 
                 type="message"
                 placeholder="new message"
-                value={this.state.message}
+                value={this.state.content}
                 onChange={this.handleChange}
                    />
                 <input type='submit' value='Send'/>

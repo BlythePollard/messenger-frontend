@@ -1,5 +1,5 @@
 import React from 'react';
-import MessageForm from './MessageForm'
+import MessageForm from '../components/MessageForm'
 
 export default class UserLogin extends React.Component {
     state = {

@@ -1,12 +1,9 @@
 //will render login component & chat board with all messages (index)
 import React from 'react';
-import UserLogin from '../components/UserLogin'
-import MessagesView from '../components/MessagesView'
+import UserLogin from '../containers/UserLogin'
+import MessagesView from './MessagesView'
 
-export default class ChatContainer extends React.Component {
-    state = {
-        messages: []
-    }
+export default class ChatBox extends React.Component {
 
     componentDidMount() {
         this.fetchMessages()
@@ -16,14 +13,13 @@ export default class ChatContainer extends React.Component {
         fetch('http://localhost:3000/api/v1/chatroom')
         .then(resp => resp.json())
         .then((data) => 
-            this.setState({messages: data}))
+            this.setState({messages: this.props}))
     }
 
     render() {
         return (
             <div>
-                <MessagesView messages={this.state.messages}/>
-                <UserLogin />
+                <MessagesView messages={this.props.messages} user={this.props.user}/>
             </div>
         )
     }
