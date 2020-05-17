@@ -8,8 +8,6 @@ export default class MessageForm extends React.Component {
         messages: this.props.messages
     }
 
-    //adding new message to state on submit
-
     handleSubmit = (event) => {
         event.preventDefault()
         const user = this.props.localStorage

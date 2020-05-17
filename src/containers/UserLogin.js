@@ -44,7 +44,6 @@ export default class UserLogin extends React.Component {
         return (
             <div>
                 <ChatBox isSubmitted={this.state.isSubmitted} username={this.state.username} localStorage={this.state.localStorage}/>
-                {/* {this.state.isSubmitted && <MessageForm username={this.state.username} localStorage={this.state.localStorage}/>}    */}
                 <br></br>
                <form onSubmit={this.handleSubmit}>
                    <input 
