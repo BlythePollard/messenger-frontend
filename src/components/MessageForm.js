@@ -4,7 +4,7 @@ import MessagesView from './MessagesView'
 export default class MessageForm extends React.Component {
     state = {
         content: '',
-        username: this.props.username,
+        //username: this.props.username,
         messages: this.props.messages
     }
 
@@ -21,10 +21,16 @@ export default class MessageForm extends React.Component {
             body: JSON.stringify(data)
         })
         .then(resp => resp.json())
+        
         .then(data => {
             this.setState({ messages: [...this.state.messages, data]})
         })
     }
+    //     {id: 105, content: "heythere", user_id: 13, user: {…}}
+// content: "heythere"
+// id: 105
+// user: {id: 13, username: "user1"}
+// user_id: 13
 
     handleChange = (event) => {
         this.setState({
@@ -50,25 +56,3 @@ export default class MessageForm extends React.Component {
     }
 
 }
-// <ChatBox message={this.state}/>
-//<ChatBox newMessage={this.state.content}/>
-
-
-
-//const MessageForm = (props) => {
-    //     return (
-    //         <div>
-    //             <form onSubmit={this.handleSubmit}>
-    //             <input 
-    //                 type="message"
-    //                 placeholder="new message"
-    //                 value={this.state.username}
-    //                 onChange={this.handleChange}
-    //                    />
-    //                 <input type='submit' value='Login'/>
-    //             </form>
-    //         </div>
-    //     )
-    // }
-    
-    // export default MessageForm;
