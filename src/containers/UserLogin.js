@@ -1,5 +1,7 @@
 import React from 'react';
 import MessageForm from '../components/MessageForm'
+import ChatBox from '../components/ChatBox'
+
 
 export default class UserLogin extends React.Component {
     state = {
@@ -41,7 +43,8 @@ export default class UserLogin extends React.Component {
     render() {
         return (
             <div>
-                {this.state.isSubmitted && <MessageForm username={this.state.username} localStorage={this.state.localStorage}/>}   
+                <ChatBox isSubmitted={this.state.isSubmitted} username={this.state.username} localStorage={this.state.localStorage}/>
+                {/* {this.state.isSubmitted && <MessageForm username={this.state.username} localStorage={this.state.localStorage}/>}    */}
                 <br></br>
                <form onSubmit={this.handleSubmit}>
                    <input 

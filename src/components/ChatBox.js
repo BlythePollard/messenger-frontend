@@ -2,8 +2,13 @@
 import React from 'react';
 import UserLogin from '../containers/UserLogin'
 import MessagesView from './MessagesView'
+import MessageForm from '../components/MessageForm'
+
 
 export default class ChatBox extends React.Component {
+    state = {
+        messages: []
+    }
 
     componentDidMount() {
         this.fetchMessages()
@@ -13,14 +18,16 @@ export default class ChatBox extends React.Component {
         fetch('http://localhost:3000/api/v1/chatroom')
         .then(resp => resp.json())
         .then((data) => 
-            this.setState({messages: this.props}))
+            this.setState({messages: data})) //fetch all messages & set to state
     }
 
     render() {
         return (
             <div>
-                <MessagesView messages={this.props.messages} user={this.props.user}/>
+                {this.props.isSubmitted && <MessageForm messages={this.state.messages} username={this.props.username} localStorage={this.props.localStorage}/>}   
             </div>
         )
     }
 }
+
+

@@ -1,13 +1,14 @@
 import React from 'react'
-import ChatBox from './ChatBox'
-
+import MessagesView from './MessagesView'
 
 export default class MessageForm extends React.Component {
     state = {
         content: '',
         username: this.props.username,
-        messages: []
+        messages: this.props.messages
     }
+
+    //adding new message to state on submit
 
     handleSubmit = (event) => {
         event.preventDefault()
@@ -23,7 +24,7 @@ export default class MessageForm extends React.Component {
         })
         .then(resp => resp.json())
         .then(data => {
-            this.setState({ messages: data})
+            this.setState({ messages: [...this.state.messages, data]})
         })
     }
 
@@ -36,21 +37,23 @@ export default class MessageForm extends React.Component {
     render() {
         return(
             <div>
-            <ChatBox messages={this.state.messages}/>
             <form onSubmit={this.handleSubmit}>
             <input 
                 type="message"
                 placeholder="new message"
-                value={this.state.content}
+                value={this.state.content.content}
                 onChange={this.handleChange}
                    />
                 <input type='submit' value='Send'/>
             </form>
+            <MessagesView messages={this.state.messages}/>
         </div>
         )
     }
 
 }
+// <ChatBox message={this.state}/>
+//<ChatBox newMessage={this.state.content}/>
 
 
 

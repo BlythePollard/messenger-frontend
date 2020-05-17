@@ -1,9 +1,7 @@
 import React from 'react'
 
 const MessagesView = (props) => {
-    console.log(props)
-    console.log(props.user)
-    const user = props.user
+    console.log(props.messages)
     
     return (
         <div>
@@ -18,3 +16,6 @@ const MessagesView = (props) => {
 }
 
 export default MessagesView
+
+
+//access username from localstorage
