@@ -4,7 +4,6 @@ import MessagesView from './MessagesView'
 export default class MessageForm extends React.Component {
     state = {
         content: '',
-        //username: this.props.username,
         messages: this.props.messages
     }
 
@@ -26,11 +25,6 @@ export default class MessageForm extends React.Component {
             this.setState({ messages: [...this.state.messages, data]})
         })
     }
-    //     {id: 105, content: "heythere", user_id: 13, user: {…}}
-// content: "heythere"
-// id: 105
-// user: {id: 13, username: "user1"}
-// user_id: 13
 
     handleChange = (event) => {
         this.setState({

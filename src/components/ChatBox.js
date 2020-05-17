@@ -4,15 +4,23 @@ import MessageForm from '../components/MessageForm'
 
 export default class ChatBox extends React.Component {
     state = {
-        messages: []
+        messages: [],
     }
+
 
     componentDidMount() {
         this.fetchMessages()
+        // this.interval = setInterval(() => {
+        //     this.fetchMessages()
+        // }, 1000)
     }
 
+    // componentWillUnmount() {
+    //     clearInterval(this.interval)
+    // }
+
     fetchMessages = () => {
-        fetch('http://localhost:3000/api/v1/chatroom')
+        fetch('http://localhost:3000/api/v1/messages')
         .then(resp => resp.json())
         .then((data) => 
             this.setState({messages: data}))
