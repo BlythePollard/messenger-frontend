@@ -13,7 +13,7 @@ export default class ChatContainer extends React.Component {
     }
 
     fetchMessages = () => {
-        fetch('http://localhost:3000/api/v1/messages')
+        fetch('http://localhost:3000/api/v1/chatroom')
         .then(resp => resp.json())
         .then((data) => 
             this.setState({messages: data}))

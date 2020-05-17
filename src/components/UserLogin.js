@@ -4,7 +4,8 @@ import MessageForm from './MessageForm'
 export default class UserLogin extends React.Component {
     state = {
         username: '',
-        isSubmitted: false
+        isSubmitted: false,
+        localStorage: ''
     }
 
     handleChange = (event) => {
@@ -30,6 +31,7 @@ export default class UserLogin extends React.Component {
                 localStorage.setItem("token", data.id)
                 this.setState({ username: data.username})
                 this.setState({ isSubmitted: true })
+                this.setState({localStorage: localStorage.token})
             } else {
                 alert("please try again")
             }
@@ -39,7 +41,7 @@ export default class UserLogin extends React.Component {
     render() {
         return (
             <div>
-                {this.state.isSubmitted && <MessageForm />}   
+                {this.state.isSubmitted && <MessageForm username={this.state.username} localStorage={this.state.localStorage}/>}   
                 <br></br>
                <form onSubmit={this.handleSubmit}>
                    <input 
