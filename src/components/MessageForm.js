@@ -1,5 +1,4 @@
 import React from 'react'
-import MessagesView from './MessagesView'
 
 export default class MessageForm extends React.Component {
     state = {
@@ -44,7 +43,6 @@ export default class MessageForm extends React.Component {
                    />
                 <input type='submit' value='Send'/>
             </form>
-            <MessagesView messages={this.state.messages}/>
         </div>
         )
     }
