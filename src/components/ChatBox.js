@@ -9,7 +9,6 @@ export default class ChatBox extends React.Component {
         messages: [],
     }
 
-
     componentDidMount() {
         this.fetchMessages()
     }
