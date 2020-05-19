@@ -1,4 +1,4 @@
-Basic Messenger
+## Basic Messenger:
 This front-end app works with a Rails API to enable basic message sending between users. It requires a simple login (unauthenticated) in order to post a message. User1 can post a message and see their message added to the chat box. User2, in another browser window, can also see the message that User1 has posted within one second of posting. Both users are able to enjoy two-way messaging with a minimal delay.
 
 Getting Started:
@@ -10,14 +10,12 @@ In a second tab, launch the frontend using 'npm start'- allow server to start on
 
 Navigate to http://localhost:3001 to launch the app.
 
-
-Usage:
+## Usage:
 Once the application is launched, user will be prompted to sign in. User can sign in with either of the seeded usernames, 'user1' or 'user2'. Once signed in, the user can leave a new message on the chat board.
 
 To view the capability of 2-way chat between users, launch the app again in an incognito browser and sign in as the second user. From here, user1 and user2 can send each other messages that are updated in both windows within 1 second of submission.
 
-
-Reflections & Next Steps:
+## Reflections & Next Steps:
 This app was created using the frameworks that I have learned from my Flatiron bootcamp and am most comfortable with- Ruby on Rails and React.js. The biggest challenge I encoungered in building the app was finding a way for the chat component to update with messages for both users in different browsers without a page refresh. I solved this issue by setting a timed fetch request in my ChatBox component, which re-fetches the message data from the API each second, causing the component to re-render and display new messages from any user. The drawback of this solution is the need to constantly re-fetch data, causing potentially unnecessary traffic between my frontend and backend.
 
 The timed fetch solution works for my simple app, but if I were to develop the app further or work toward deployment, I would likely take another route that I found while researching my data refreshing issue: a WebSocket API such as Socket.IO. I researched Socket.IO as a potential solution to my issue, but in my research I found that it works specifically with Node.js, an environment that I am not very familiar with. 
